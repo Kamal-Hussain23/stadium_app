@@ -1,19 +1,6 @@
-# Stadium Security Management System
+# Stadium Security Dashboard
 
-A web-based security dashboard for monitoring and managing stadium gate entries, badge scans, and security alerts.
-
-## Architecture
-
-```
-Frontend (HTML/JS)  →  Backend (Flask API)  →  Data Layer (Python)  →  SQLite (stadium.db)
-```
-
-| Layer | File | Responsibility |
-|-------|------|----------------|
-| Frontend | `frontend/index.html`, `frontend/app.js` | UI rendering, HTTP requests |
-| Backend | `backend/app.py` | Route handling, request validation |
-| Data Layer | `backend/data_layer.py` | SQL execution, parameterized queries |
-| Database | `stadium.db` | Persistent storage |
+A web app for tracking stadium entry logs. Built to prevent data loss during investigations.
 
 ## Quick Start
 
@@ -21,34 +8,29 @@ Frontend (HTML/JS)  →  Backend (Flask API)  →  Data Layer (Python)  →  SQL
 ./run.sh
 ```
 
-The server starts on `http://localhost:5000`.
-
-## API Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/entries` | List all stadium entries |
-| GET | `/api/entries?gate=A` | Filter entries by gate |
-| GET | `/api/health` | Health check |
+Then open `http://localhost:5000` in your browser.
 
 ## Project Structure
 
 ```
 stadium_app/
 ├── backend/
-│   ├── app.py              # Flask API server
-│   └── data_layer.py       # SQLite data access layer
+│   ├── app.py              # Flask routes
+│   └── data_layer.py       # SQLite queries
 ├── frontend/
-│   ├── index.html           # Security Command Dashboard
-│   └── app.js               # Frontend logic
+│   ├── index.html           # Dashboard UI
+│   └── app.js               # Fetch logic
 ├── SPECS/
-│   ├── TECH.md              # Technical architecture
-│   └── ROADMAP.md           # Engineering milestones
-├── seed.sql                 # Database seed data
-├── run.sh                   # Server startup script
-└── stadium.db               # SQLite database
+│   ├── MISSION.md           # Why this project exists
+│   ├── TECH.md              # Architecture rules
+│   └── ROADMAP.md           # What's next
+├── seed.sql                 # Sample data
+└── run.sh                   # Start script
 ```
 
-## Development
+## Features
 
-See `SPECS/ROADMAP.md` for the current development status and upcoming features.
+- View stadium entry logs
+- Filter by gate (A, B, C, D)
+- See person names and phone numbers
+- Data saved in SQLite (survives crashes)
